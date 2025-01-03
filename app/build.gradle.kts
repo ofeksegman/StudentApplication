@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "com.example.studentapplication"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.studentapplication"
         minSdk = 29
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -33,16 +33,28 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    configurations {
+        implementation.get().exclude(mapOf("group" to "org.jetbrains", "module" to "annotations"))
+
+    }
 }
 
-dependencies {
+    dependencies {
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-}
+        implementation(libs.androidx.core.ktx)
+        implementation(libs.androidx.appcompat)
+        implementation(libs.material)
+        implementation(libs.androidx.activity)
+        implementation(libs.androidx.constraintlayout)
+        implementation(libs.androidx.room.common)
+        implementation(libs.androidx.room.compiler)
+        testImplementation(libs.junit)
+        androidTestImplementation(libs.androidx.junit)
+        androidTestImplementation(libs.androidx.espresso.core)
+
+    }
+
+
+
+
+
