@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -12,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.PrimaryKey
 import androidx.room.Entity
+import com.example.studentapplication.model.Model
 
 @Entity
 data class Student(
@@ -21,41 +25,70 @@ data class Student(
     var isChecked: Boolean
 )
 
-class StudentAdapter : RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() {
-    private val students = mutableListOf<Student>()
+class StudentViewHolder (itemView: View): RecyclerView.ViewHolder(itemView) {
+    var nameTextView: TextView?=null
+    var idTextView : TextView?=null
+    var checkBox: CheckBox?=null
+    var student: Student?=null
+    var avatarImageView: ImageView?=null
 
-    class StudentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        // Define views here, e.g., TextView for name, ImageView for profile, etc.
+    init {
+        nameTextView = itemView.findViewById(R.id.student_row_name_view)
+        idTextView = itemView.findViewById(R.id.student_row_id)
+        checkBox = itemView.findViewById(R.id.student_row_checkbox)
+        avatarImageView = itemView.findViewById(R.id.student_row_image_view)
+        checkBox?.apply{
+            setOnClickListener{view->
+            (tag as? Int)?.let{tag->
+                student?.isChecked = (view as? CheckBox)?.isChecked ?: false
+            }
+            }
+        }
+
+        }
+    fun bind(student: Student?, position: Int){
+        this.student = student
+        nameTextView?.text = student?.name
+        idTextView?.text = student?.id
+        checkBox?.apply{
+            isChecked=student?.isChecked ?: false
+            tag=position
+        }
+        avatarImageView?.let {
+            Glide.with(it.context)
+                .load(student.avatarUrl)
+                .into(it)
+        }
     }
+
+
+
+}
+class StudentRecycleAdapter(private val students : List<Student>?): RecyclerView.Adapter<StudentViewHolder>(){
+
+    override fun getItemCount(): Int = students?.size ?: 0
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudentViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_students_recycle_list_view, parent, false)
-        return StudentViewHolder(view)
+        val inflation=LayoutInflater.from(parent.context)
+        val view = inflation.inflate(R.layout.student_list_row, parent, false)
+        return StudentViewHolder(view);
+
     }
+
 
     override fun onBindViewHolder(holder: StudentViewHolder, position: Int) {
-        val student = students[position]
-        // Bind data to views here
+        holder.bind(students?.get(position), position)
+        val student =students?.get(position)
     }
 
-    override fun getItemCount(): Int = students.size
-
-    // Method to get the list of students (if needed)
-    fun getStudents(): List<Student> = students
-
-    // Method to add students
-    fun addStudent(student: Student) {
-        students.add(student)
-        notifyItemInserted(students.size - 1)
-    }
-
-    fun remove(student: Student) {
-        students.remove(student)
-    }
 }
 
 
 class StudentsRecycleListView : AppCompatActivity() {
+
+    var students: MutableList<Student> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -67,15 +100,15 @@ class StudentsRecycleListView : AppCompatActivity() {
 
 
         }
+        students=Model.shared.students
+        val recyclerView: RecyclerView = findViewById(R.id.students_recycler_view)
+        recyclerView.setHasFixedSize(true)
 
+        val layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = layoutManager
 
-        val list=findViewById<RecyclerView>(R.id.student_list);
-        val studentAdapter  = StudentAdapter()
-        // Add a new student
-        studentAdapter.addStudent(Student("1", "John Doe", "https://randomuser.me/api", false));
-
-        list.adapter = studentAdapter
-        list.layoutManager = LinearLayoutManager(this)
+        val adapter = StudentRecycleAdapter(students)
+        recyclerView.adapter = adapter
 
 
 
