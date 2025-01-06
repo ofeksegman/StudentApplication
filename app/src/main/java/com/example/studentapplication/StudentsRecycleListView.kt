@@ -30,13 +30,12 @@ class StudentViewHolder (itemView: View): RecyclerView.ViewHolder(itemView) {
     var idTextView : TextView?=null
     var checkBox: CheckBox?=null
     var student: Student?=null
-    var avatarImageView: ImageView?=null
 
     init {
         nameTextView = itemView.findViewById(R.id.student_row_name_view)
         idTextView = itemView.findViewById(R.id.student_row_id)
         checkBox = itemView.findViewById(R.id.student_row_checkbox)
-        avatarImageView = itemView.findViewById(R.id.student_row_image_view)
+
         checkBox?.apply{
             setOnClickListener{view->
             (tag as? Int)?.let{tag->
@@ -54,11 +53,7 @@ class StudentViewHolder (itemView: View): RecyclerView.ViewHolder(itemView) {
             isChecked=student?.isChecked ?: false
             tag=position
         }
-        avatarImageView?.let {
-            Glide.with(it.context)
-                .load(student.avatarUrl)
-                .into(it)
-        }
+
     }
 
 
