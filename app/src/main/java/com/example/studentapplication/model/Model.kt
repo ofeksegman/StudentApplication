@@ -1,5 +1,7 @@
 package com.example.studentapplication.model
 import com.example.studentapplication.Student
+import com.example.studentapplication.StudentsRecycleListView
+import com.example.studentapplication.StudentRecycleAdapter
 
 class Model  private constructor(){
     val students: MutableList<Student> = ArrayList()
@@ -8,7 +10,8 @@ class Model  private constructor(){
         val shared =Model()
     }
     init {
-        for (i  in 0..10){
+        var studentsSize=students.size
+        for (i  in 0..studentsSize){
             val student=Student("id$i","name$i",false, "address$i", "phone$i")
             students.add(student)
         }

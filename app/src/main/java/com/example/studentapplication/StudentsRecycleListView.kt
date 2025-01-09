@@ -1,9 +1,11 @@
 package com.example.studentapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
@@ -84,7 +86,7 @@ class StudentRecycleAdapter(private val students : List<Student>?): RecyclerView
 
 
 class StudentsRecycleListView : AppCompatActivity() {
-
+    var adapter = StudentRecycleAdapter(Model.shared.students)
     var students: MutableList<Student> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -104,14 +106,18 @@ class StudentsRecycleListView : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
 
-        val adapter = StudentRecycleAdapter(students)
+        adapter = StudentRecycleAdapter(students)
         recyclerView.adapter = adapter
 
 
+        var addButton=findViewById<Button>(R.id.activity_students_recycle_list_view_add_button).setOnClickListener(){
+            val intent = Intent(this, addStudentActivity::class.java)
+            startActivity(intent)}
+        }
 
-
-
-
+        override fun onResume() {
+            super.onResume()
+            adapter.notifyDataSetChanged()
         }
     }
 

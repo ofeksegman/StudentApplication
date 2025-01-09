@@ -9,6 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.studentapplication.model.Model
 import com.google.android.material.textfield.TextInputEditText
+import com.example.studentapplication.StudentsRecycleListView
 
 class addStudentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +29,7 @@ class addStudentActivity : AppCompatActivity() {
             val isPresent = findViewById<CheckBox>(R.id.activity_add_student_checkbox).isChecked()
             val student = Student(id, name, isPresent, address, phone)
             Model.shared.students.add(student)
+            StudentsRecycleListView().adapter?.notifyDataSetChanged()
             finish()
 
         }
