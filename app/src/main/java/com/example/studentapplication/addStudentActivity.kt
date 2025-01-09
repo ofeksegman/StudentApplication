@@ -33,6 +33,9 @@ class addStudentActivity : AppCompatActivity() {
             finish()
 
         }
+        var cancelButton=findViewById<Button>(R.id.activity_add_student_cancel_button).setOnClickListener(){
+            finish()
+        }
 
     }
 

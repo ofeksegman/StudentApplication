@@ -99,7 +99,7 @@ class StudentsRecycleListView : AppCompatActivity() {
 
 
         }
-        students=Model.shared.students
+        students = Model.shared.students
         val recyclerView: RecyclerView = findViewById(R.id.students_recycler_view)
         recyclerView.setHasFixedSize(true)
 
@@ -110,14 +110,17 @@ class StudentsRecycleListView : AppCompatActivity() {
         recyclerView.adapter = adapter
 
 
-        var addButton=findViewById<Button>(R.id.activity_students_recycle_list_view_add_button).setOnClickListener(){
-            val intent = Intent(this, addStudentActivity::class.java)
-            startActivity(intent)}
-        }
-
-        override fun onResume() {
-            super.onResume()
-            adapter.notifyDataSetChanged()
-        }
+        var addButton =
+            findViewById<Button>(R.id.activity_students_recycle_list_view_add_button).setOnClickListener() {
+                val intent = Intent(this, addStudentActivity::class.java)
+                startActivity(intent)
+            }
     }
+
+    override fun onResume() {
+        super.onResume()
+        adapter.notifyDataSetChanged()
+    }
+}
+
 
