@@ -21,8 +21,10 @@ import com.example.studentapplication.model.Model
 data class Student(
     @PrimaryKey val id: String,
     val name: String,
-    val avatarUrl: String,
-    var isChecked: Boolean
+    var isChecked: Boolean,
+    var address: String,
+    var phone: String,
+
 )
 
 class StudentViewHolder (itemView: View): RecyclerView.ViewHolder(itemView) {

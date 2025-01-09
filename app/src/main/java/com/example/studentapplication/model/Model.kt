@@ -9,7 +9,7 @@ class Model  private constructor(){
     }
     init {
         for (i  in 0..10){
-            val student=Student("id$i","name$i","@tools:sample/avatars[0]",false)
+            val student=Student("id$i","name$i",false, "address$i", "phone$i")
             students.add(student)
         }
     }
