@@ -47,8 +47,22 @@ class StudentViewHolder (itemView: View): RecyclerView.ViewHolder(itemView) {
             }
             }
         }
-
+        itemView.setOnClickListener{
+            adapterPosition
         }
+        itemView.findViewById<View>(R.id.student_row).setOnClickListener {
+            val intent = Intent(itemView.context, StudentDetailsActivity::class.java).apply {
+                putExtra("STUDENT_ID", student?.id)
+                putExtra("STUDENT_NAME", student?.name)
+                putExtra("STUDENT_ADDRESS", student?.address)
+                putExtra("STUDENT_PHONE", student?.phone)
+                putExtra("STUDENT_IS_CHECKED", student?.isChecked)
+            }
+            itemView.context.startActivity(intent)
+        }
+
+
+    }
     fun bind(student: Student?, position: Int){
         this.student = student
         nameTextView?.text = student?.name
@@ -121,6 +135,8 @@ class StudentsRecycleListView : AppCompatActivity() {
         super.onResume()
         adapter.notifyDataSetChanged()
     }
+
+
 }
 
 

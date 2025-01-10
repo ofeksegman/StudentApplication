@@ -30,7 +30,7 @@
         app:layout_constraintStart_toEndOf="@+id/activity_add_student_cancel_button" />
 
     <TextView
-        android:id="@+id/activity_add_student_name"
+        android:id="@+id/activity_student_details_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -41,7 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
-        android:id="@+id/activity_add_student_id"
+        android:id="@+id/activity_student_details_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -49,10 +49,10 @@
         android:text="id"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_add_student_name" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_student_details_name" />
 
     <TextView
-        android:id="@+id/activity_add_student_phone"
+        android:id="@+id/activity_student_details_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -60,10 +60,10 @@
         android:text="phone"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_add_student_id" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_student_details_id" />
 
     <TextView
-        android:id="@+id/activity_add_student_adress"
+        android:id="@+id/activity_student_details_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -71,10 +71,10 @@
         android:text="address"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_add_student_phone" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_student_details_phone" />
 
     <CheckBox
-        android:id="@+id/activity_add_student_checkbox"
+        android:id="@+id/activity_student_details_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -82,7 +82,7 @@
         android:text="Checked"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_add_student_adress" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_student_details_address" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -106,7 +106,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="10dp"
         android:hint="Enter Text Here"
-        app:layout_constraintStart_toEndOf="@+id/activity_add_student_name"
+        app:layout_constraintStart_toEndOf="@+id/activity_student_details_name"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <com.google.android.material.textfield.TextInputEditText
@@ -114,7 +114,7 @@
         android:layout_width="200dp"
         android:layout_height="48dp"
         android:hint="Enter Text Here"
-        app:layout_constraintStart_toEndOf="@+id/activity_add_student_id"
+        app:layout_constraintStart_toEndOf="@+id/activity_student_details_id"
         app:layout_constraintTop_toBottomOf="@+id/activity_add_student_name_input" />
 
     <com.google.android.material.textfield.TextInputEditText
@@ -124,7 +124,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:hint="Enter Text Here"
-        app:layout_constraintStart_toEndOf="@+id/activity_add_student_phone"
+        app:layout_constraintStart_toEndOf="@+id/activity_student_details_phone"
         app:layout_constraintTop_toBottomOf="@+id/activity_add_student_id_input" />
 
 
@@ -133,6 +133,6 @@
         android:layout_width="200dp"
         android:layout_height="48dp"
         android:hint="Enter Text Here"
-        app:layout_constraintStart_toEndOf="@+id/activity_add_student_adress"
+        app:layout_constraintStart_toEndOf="@+id/activity_student_details_address"
         app:layout_constraintTop_toBottomOf="@+id/activity_add_student_phone_input" />
 </androidx.constraintlayout.widget.ConstraintLayout>
