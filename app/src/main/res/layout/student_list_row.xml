@@ -8,7 +8,7 @@
     android:background="?attr/selectableItemBackground"
     >
 
-
+    android:background="?attr/selectableItemBackground"
     <TextView
         android:id="@+id/student_row_name_view"
         android:layout_width="wrap_content"

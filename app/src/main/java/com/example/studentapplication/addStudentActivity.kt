@@ -21,10 +21,10 @@ class addStudentActivity : AppCompatActivity() {
             insets
         }
         var save = findViewById<Button>(R.id.activity_add_student_Save_Button).setOnClickListener {
-            val id = findViewById<TextInputEditText>(R.id.activity_add_student_id_input).text.toString()
+            val id = findViewById<TextInputEditText>(R.id.activity_edit_student_id_input).text.toString()
             val name = findViewById<TextInputEditText>(R.id.activity_add_student_name_input).text.toString()
             val phone= findViewById<TextInputEditText>(R.id.activity_add_student_phone_input).text.toString()
-            val address= findViewById<TextInputEditText>(R.id.activity_add_student_address_input).text.toString()
+            val address= findViewById<TextInputEditText>(R.id.activity_edit_student_address_input).text.toString()
             val isPresent = findViewById<CheckBox>(R.id.activity_student_details_checkbox).isChecked()
             val student = Student(id, name, isPresent, address, phone)
             Model.shared.students.add(student)

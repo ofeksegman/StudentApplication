@@ -1,5 +1,6 @@
 package com.example.studentapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
@@ -27,6 +28,7 @@ class StudentDetailsActivity : AppCompatActivity() {
         val studentAddress=intent.getStringExtra("STUDENT_ADDRESS")
         val studentPhone=intent.getStringExtra("STUDENT_PHONE")
         val studentIsChecked=intent.getBooleanExtra("STUDENT_IS_CHECKED", false)
+        val position=intent.getIntExtra("STUDENT_INDEX",0)
 
         findViewById<TextView>(R.id.activity_student_details_name).text="Name: $studentName"
         findViewById<TextView>(R.id.activity_student_details_id).text="ID: $studentId"
@@ -37,6 +39,18 @@ class StudentDetailsActivity : AppCompatActivity() {
         findViewById<ImageButton>(R.id.activity_student_details_back).setOnClickListener {
             finish()
         }
+        findViewById<Button>(R.id.activity_student_details_edit_button).setOnClickListener {
+            val intent = intent
+            intent.setClass(this, editStudentActivity::class.java).apply {
+                    putExtra("STUDENT_ID", studentId)
+                    putExtra("STUDENT_NAME", studentName)
+                    putExtra("STUDENT_ADDRESS", studentAddress)
+                    putExtra("STUDENT_PHONE", studentPhone)
+                    putExtra("STUDENT_IS_CHECKED", studentIsChecked)
+                    putExtra("STUDENT_INDEX", position)
+                }
+            startActivity(intent)
+        }
+        }
 
     }
-}

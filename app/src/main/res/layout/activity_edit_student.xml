@@ -8,26 +8,14 @@
     tools:context=".addStudentActivity">
 
     <Button
-        android:id="@+id/activity_add_student_cancel_button"
-        android:layout_width="100dp"
+        android:id="@+id/activity_edit_cancel_button"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="50dp"
         android:text="Cancel"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/activity_add_student_Save_Button"
+        app:layout_constraintEnd_toStartOf="@+id/activity_edit_delete_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/activity_add_student_Save_Button"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="50dp"
-        android:text="Save"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/activity_add_student_cancel_button" />
 
     <TextView
         android:id="@+id/activity_student_details_name"
@@ -74,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/activity_student_details_phone" />
 
     <CheckBox
-        android:id="@+id/activity_student_details_checkbox"
+        android:id="@+id/activity_edit_student_details_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -100,8 +88,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/activity_student_edit_back"
+        android:layout_width="73dp"
+        android:layout_height="56dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back_button" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="293dp"
+        android:layout_height="53dp"
+        android:text="Edit Student"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/activity_student_edit_back"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/activity_add_student_name_input"
+        android:id="@+id/activity_edit_student_name_input"
         android:layout_width="200dp"
         android:layout_height="48dp"
         android:layout_marginTop="10dp"
@@ -115,10 +122,10 @@
         android:layout_height="48dp"
         android:hint="Enter Text Here"
         app:layout_constraintStart_toEndOf="@+id/activity_student_details_id"
-        app:layout_constraintTop_toBottomOf="@+id/activity_add_student_name_input" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_edit_student_name_input" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/activity_add_student_phone_input"
+        android:id="@+id/activity_edit_student_phone_input"
         android:layout_width="200dp"
         android:layout_height="48dp"
         android:layout_marginStart="4dp"
@@ -134,5 +141,26 @@
         android:layout_height="48dp"
         android:hint="Enter Text Here"
         app:layout_constraintStart_toEndOf="@+id/activity_student_details_address"
-        app:layout_constraintTop_toBottomOf="@+id/activity_add_student_phone_input" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_edit_student_phone_input" />
+
+    <Button
+        android:id="@+id/activity_edit_delete_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/activity_edit_save_button"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/activity_edit_cancel_button" />
+
+    <Button
+        android:id="@+id/activity_edit_save_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/activity_edit_delete_button" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

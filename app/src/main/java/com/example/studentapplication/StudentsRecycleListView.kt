@@ -57,6 +57,7 @@ class StudentViewHolder (itemView: View): RecyclerView.ViewHolder(itemView) {
                 putExtra("STUDENT_ADDRESS", student?.address)
                 putExtra("STUDENT_PHONE", student?.phone)
                 putExtra("STUDENT_IS_CHECKED", student?.isChecked)
+                putExtra("STUDENT_INDEX", adapterPosition)
             }
             itemView.context.startActivity(intent)
         }
